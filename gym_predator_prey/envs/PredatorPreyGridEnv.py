@@ -1,6 +1,5 @@
 import gym 
 
 
-class Prey()
-
-class PredatorPreyDiscrete()
+class PredatorPreyGridEnv():
+    pass

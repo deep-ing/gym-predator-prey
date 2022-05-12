@@ -6,10 +6,11 @@ from gym_predator_prey.envs.PredatorPreyBaseEnv import (
     MapBase
 )
 
-
 class Prey(PreyBase):
     def __init__(self, pos_x, pos_y, max_hp, speed):
         super().__init__(pos_x, pos_y, max_hp, speed)
+        self.action_space = gym.spaces.Discrete(5)
+        self.observation_space = gym.spaces.Discrete()
 
     def take_action(self, action):
         return super().take_action(action)
