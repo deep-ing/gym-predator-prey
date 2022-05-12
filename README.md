@@ -2,7 +2,7 @@
 
 * Action space  is fixed 
 * Observation space is given by full observation, hence you can use `gym.Wrapper`
-* Full observation : `predator` + `prey' + 'map`
+* Full observation : `predator` + `prey` + `map`
 
 ## 1. Discrete 
 
