@@ -15,7 +15,7 @@
   * `observation_space` : full information
   * `reward`  : `-epsilon` for each time step 
 * Map 
-  * [-1,1] x [-1,1] with center (0,0)
+  * [0,1,2, ... `width`-1] x [0,1,2,..., `height`-1]
 
 
 ## 2. Continuous
@@ -29,7 +29,7 @@
   * `observation_space` : full information
   * `reward`  : `-epsilon` for each time step 
 * Map 
-  * [-1,1] x [-1,1] with center (0,0)
+  * [0,`width`] x [0, `height`]
 
 
 ## 3. Grid 

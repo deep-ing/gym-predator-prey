@@ -1,0 +1,10 @@
+{
+    "env":"grid", 
+    "n_predators":4, 
+    "n_preys": 5, 
+    "width":10, 
+    "height":10, 
+    "predator_range":2,
+    "predator_max_speed":1,
+    "prey_max_speed" : 1
+}
