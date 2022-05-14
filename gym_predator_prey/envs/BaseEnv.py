@@ -24,6 +24,7 @@ class BaseEnv(gym.Env):
                     if np.linalg.norm(np.array(predator_pos) - np.array(prey_pos)) < predator.range:
                         prey.reduce_hp_by_1()
                         predator.increase_eaten_by_1()
+                        predator.save_prey_pos(prey.get_pos())
 
     def make_predators_hungry(self):
         for predator in self.predators:
@@ -74,8 +75,9 @@ class BaseEnv(gym.Env):
     def render(self):
         predator_positions = [predator.get_integer_pos() for predator in self.predators] 
         prey_positions = [prey.get_integer_pos() for prey in self.preys if prey.is_alive()] 
+        eaten_positions = [predator.eaten_positions for predator in self.predators]
  
-        self.renderer.render(predator_positions, prey_positions)
+        self.renderer.render(predator_positions, prey_positions, eaten_positions)
 
     def generate_random_positions(self, n, width, height):
         positions = [] 

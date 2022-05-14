@@ -1,4 +1,5 @@
-
+import numpy as np 
+import copy 
 class ObjectBase():
     def __init__(self, pos_x, pos_y, xmax, ymax):
         self.pos = (pos_x, pos_y)
@@ -13,6 +14,12 @@ class ObjectBase():
     def get_pos(self):
         return self.pos
 
+
+    def get_integer_pos(self):
+        cur_pos = self.get_pos()
+        return (int(np.round(cur_pos[0])), int(np.round(cur_pos[1])))
+
+
     def collision(self, other):
         raise NotImplementedError()
 
@@ -23,6 +30,7 @@ class PredatorBase(ObjectBase):
         self.current_hp = 1
         self.range = range
         self.eaten = 0 
+        self.eaten_positions = []
 
     def take_action(self, action):
         raise NotImplementedError()
@@ -36,6 +44,10 @@ class PredatorBase(ObjectBase):
     def is_satisfied(self):
         return True if self.eaten > 0 else False 
 
+    def save_prey_pos(self, prey_pos):
+        self.eaten_positions.append((copy.deepcopy(self.get_pos()), copy.deepcopy(prey_pos)))
+
+
 
 class PreyBase(ObjectBase):
     def __init__(self, pos_x, pos_y, xmax, ymax):        
@@ -47,6 +59,7 @@ class PreyBase(ObjectBase):
 
     def reduce_hp_by_1(self):
         self.current_hp -= self.current_hp
+
 
     def is_alive(self):
         return True if self.current_hp >0 else False 

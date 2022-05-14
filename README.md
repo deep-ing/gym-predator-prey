@@ -3,6 +3,7 @@
 This environment is for meta-learning or transfer-learning experiments. Three types of envrionments are given *Discrete*, *Continuous*, and *Grid*. All the spaces have same observation space, but the action spaces are different.
 
 
+
 * Observation space is given by full observation, hence you can use `gym.Wrapper`
 * Full observation : `predator` + `prey` + `map`
 

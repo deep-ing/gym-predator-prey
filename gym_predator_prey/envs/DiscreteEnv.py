@@ -31,9 +31,6 @@ class Prey(PreyBase):
         info = [self.pos[0], self.pos[1], self.max_speed]
         return info 
 
-    def get_integer_pos(self):
-        cur_pos = self.get_pos()
-        return (int(cur_pos[0]), int(cur_pos[1]))
 
 class Predator(PredatorBase):
     def __init__(self, pos_x, pos_y, xmax, ymax, range, max_speed):
@@ -54,10 +51,7 @@ class Predator(PredatorBase):
         info = [self.pos[0], self.pos[1], self.range, self.max_speed]
         return info 
 
-    def get_integer_pos(self):
-        cur_pos = self.get_pos()
-        return (int(cur_pos[0]), int(cur_pos[1]))
-    
+
     
 class Map(MapBase):
     def __init__(self, width, height):
@@ -98,7 +92,7 @@ class DiscreteEnv(BaseEnv):
             }
         )
         self.map = Map(self.width, self.height)
-        self.renderer = TerminalRenderer(self.width+1, self.height+1)
+        self.renderer = TerminalRenderer(self.width+1, self.height+1, self.n_predators)
     
 
 
