@@ -8,7 +8,6 @@ class BaseEnv(gym.Env):
 
     def take_predator_actions(self, predator_actions):
         for k, action in predator_actions.items():
-             
             self.predators[k].take_action(action)
 
     def take_prey_actions(self, prey_actions):
@@ -19,9 +18,9 @@ class BaseEnv(gym.Env):
         for predator in self.predators:
             for prey in self.preys:
                 if prey.is_alive():
-                    prey_pos = prey.get_pos()
-                    predator_pos = predator.get_pos()
-                    if np.linalg.norm(np.array(predator_pos) - np.array(prey_pos)) < predator.range:
+                    prey_pos = np.array(prey.get_pos(), dtype=float)
+                    predator_pos = np.array(predator.get_pos(), dtype=float)
+                    if np.linalg.norm(prey_pos - predator_pos) < predator.range:
                         prey.reduce_hp_by_1()
                         predator.increase_eaten_by_1()
                         predator.save_prey_pos(prey.get_pos())
